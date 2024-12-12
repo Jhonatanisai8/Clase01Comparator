@@ -3,6 +3,8 @@ import java.util.List;
 import java.util.Random;
 
 import funciones.SuperFunciones;
+import funciones.clases.Aleatorio;
+import funciones.clases.Naturales;
 import funciones.clases.SoloImpares;
 import funciones.clases.SoloPares;
 
@@ -14,13 +16,17 @@ public class Main {
     public Main() {
         System.out.println("Programacion funcional");
         // crear la lista de enteros
-        List<Integer> listaNumeros = crearLista();
+        List<Integer> listaNumeros = SuperFunciones.proveer(8, new Naturales());
+        System.out.println("Numeros generados.");
         listaNumeros.forEach(System.out::println);
-        System.out.println("===");
+        System.out.println("----------------------------------");
         // quedarme con solo los pares
-        List<Integer> filtrados = SuperFunciones.filtrar(listaNumeros, new SoloImpares());
+        List<Integer> filtrados = SuperFunciones.filtrar(listaNumeros, new SoloPares());
         // mostrar
+        System.out.println("Numeros filtrados.");
         filtrados.forEach(System.out::println);
+        System.out.println("----------------------------------");
+
         // pasar cada numero al cuadrado
         List<Integer> listaNumerosCuadros = pasarListaCuadrado(filtrados);
         // mostramos
@@ -56,22 +62,4 @@ public class Main {
         return lista;
     }
 
-    private List<Integer> soloPares(List<Integer> listaNumeros) {
-        for (int i = 0; i < listaNumeros.size(); i++) {
-            if (listaNumeros.get(i) / 2 != 0) {
-                listaNumeros.remove(i);
-            }
-        }
-        return listaNumeros;
-    }
-
-    private List<Integer> crearLista() {
-        List<Integer> listaNumeros = new ArrayList<>();
-        Random random = new Random();
-        for (int i = 0; i < 10; i++) {
-            int numeroGenerado = random.nextInt(10) + 1;
-            listaNumeros.add(numeroGenerado);
-        }
-        return listaNumeros;
-    }
 }
