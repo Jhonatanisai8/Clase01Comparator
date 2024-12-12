@@ -2,22 +2,27 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class App {
-    public static void main(String[] args) throws Exception {
-        new App();
+import funciones.SuperFunciones;
+import funciones.clases.SoloImpares;
+import funciones.clases.SoloPares;
+
+public class Main {
+    public static void main(String[] args) {
+        new Main();
     }
 
-    public App() {
+    public Main() {
+        System.out.println("Programacion funcional");
         // crear la lista de enteros
         List<Integer> listaNumeros = crearLista();
         listaNumeros.forEach(System.out::println);
         System.out.println("===");
         // quedarme con solo los pares
-        List<Integer> listaPares = soloPares(listaNumeros);
+        List<Integer> filtrados = SuperFunciones.filtrar(listaNumeros, new SoloImpares());
         // mostrar
-        listaPares.forEach(System.out::println);
+        filtrados.forEach(System.out::println);
         // pasar cada numero al cuadrado
-        List<Integer> listaNumerosCuadros = pasarListaCuadrado(listaPares);
+        List<Integer> listaNumerosCuadros = pasarListaCuadrado(filtrados);
         // mostramos
         System.out.println("CUADRADO");
         List<Integer> mostrarLista = mostrarLista(listaNumerosCuadros);
@@ -69,5 +74,4 @@ public class App {
         }
         return listaNumeros;
     }
-
 }
