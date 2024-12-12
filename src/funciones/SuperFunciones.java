@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import funciones.interfaces.Funcion;
 import funciones.interfaces.Predicado;
 import funciones.interfaces.Provedor;
 
@@ -22,6 +23,14 @@ public class SuperFunciones {
         List<Integer> resultado = new ArrayList<>();
         for (int i = 0; i < tamanio; i++) {
             resultado.add(provedor.obtener());
+        }
+        return resultado;
+    }
+
+    public static List<Integer> transformar(List<Integer> lista, Funcion funcion) {
+        List<Integer> resultado = new ArrayList<>();
+        for (Integer valor : lista) {
+            resultado.add(funcion.aplicar(valor));
         }
         return resultado;
     }

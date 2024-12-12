@@ -3,6 +3,8 @@ import java.util.List;
 import java.util.Random;
 
 import funciones.SuperFunciones;
+import funciones.clases.AlCuadrado;
+import funciones.clases.AlCubo;
 import funciones.clases.Aleatorio;
 import funciones.clases.Naturales;
 import funciones.clases.SoloImpares;
@@ -16,7 +18,7 @@ public class Main {
     public Main() {
         System.out.println("Programacion funcional");
         // crear la lista de enteros
-        List<Integer> listaNumeros = SuperFunciones.proveer(8, new Naturales());
+        List<Integer> listaNumeros = SuperFunciones.proveer(10, new Naturales());
         System.out.println("Numeros generados.");
         listaNumeros.forEach(System.out::println);
         System.out.println("----------------------------------");
@@ -28,13 +30,11 @@ public class Main {
         System.out.println("----------------------------------");
 
         // pasar cada numero al cuadrado
-        List<Integer> listaNumerosCuadros = pasarListaCuadrado(filtrados);
+        List<Integer> trasformados = SuperFunciones.transformar(filtrados, new AlCubo());
         // mostramos
-        System.out.println("CUADRADO");
-        List<Integer> mostrarLista = mostrarLista(listaNumerosCuadros);
-        // obtenemos la suma de los cuadros
-        int suma = obtenerSumaCuadrados(listaNumerosCuadros);
-        System.out.println("SUMA DE LOS CUADRADOS: " + suma);
+        System.out.println("Numeros elevados al cuadrado");
+        List<Integer> mostrarLista = mostrarLista(trasformados);
+        System.out.println("----------------------------------");
     }
 
     private List<Integer> mostrarLista(List<Integer> listaNumerosCuadros) {
@@ -42,24 +42,6 @@ public class Main {
             System.out.println(listaNumerosCuadros.get(i));
         }
         return listaNumerosCuadros;
-    }
-
-    private int obtenerSumaCuadrados(List<Integer> listaNumerosCuadros) {
-        int suma = 0;
-        for (int i = 0; i < listaNumerosCuadros.size(); i++) {
-            suma += listaNumerosCuadros.get(i);
-        }
-        return suma;
-    }
-
-    private List<Integer> pasarListaCuadrado(List<Integer> listaPares) {
-        int resultadoCuadrado;
-        List<Integer> lista = new ArrayList<>();
-        for (int i = 0; i < listaPares.size(); i++) {
-            resultadoCuadrado = (int) Math.pow(listaPares.get(i), 2);
-            lista.add(resultadoCuadrado);
-        }
-        return lista;
     }
 
 }
