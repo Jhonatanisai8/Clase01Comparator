@@ -5,9 +5,9 @@ import java.util.List;
 import java.util.Random;
 
 import v2Superfunciones.interfaces.Funcion;
-import v2Superfunciones.interfaces.FuncionBinaria;
 import v2Superfunciones.interfaces.Predicado;
 import v2Superfunciones.interfaces.Provedor;
+import v3InlaneClases.interfaces.FuncionBinaria;
 import v2Superfunciones.interfaces.Consumidor;
 
 public class SuperFunciones {
