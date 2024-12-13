@@ -7,6 +7,7 @@ import java.util.Random;
 import funciones.interfaces.Funcion;
 import funciones.interfaces.Predicado;
 import funciones.interfaces.Provedor;
+import funciones.interfaces.Consumidor;
 
 public class SuperFunciones {
     public static List<Integer> filtrar(List<Integer> valores, Predicado predicado) {
@@ -33,5 +34,12 @@ public class SuperFunciones {
             resultado.add(funcion.aplicar(valor));
         }
         return resultado;
+    }
+
+    public static List<Integer> actuar(List<Integer> valores, Consumidor consumidor){
+        for (Integer valor : valores) {
+            consumidor.aceptar(valor);
+        }
+        return valores;
     }
 }
