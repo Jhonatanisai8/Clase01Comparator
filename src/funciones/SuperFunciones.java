@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 import funciones.interfaces.Funcion;
+import funciones.interfaces.FuncionBinaria;
 import funciones.interfaces.Predicado;
 import funciones.interfaces.Provedor;
 import funciones.interfaces.Consumidor;
@@ -47,5 +48,13 @@ public class SuperFunciones {
         for (Integer integer : trasformados) {
             consumidor.aceptar(integer);
         }
+    }
+
+    public static Integer reducir(List<Integer> valores,Integer identidad, FuncionBinaria funcionBinaria) {
+        int total = identidad;
+        for (Integer valor : valores) {
+            total = funcionBinaria.aplicar(total,valor);
+        }
+        return total;
     }
 }
