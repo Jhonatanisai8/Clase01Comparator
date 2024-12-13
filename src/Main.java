@@ -15,30 +15,33 @@ public class Main {
     public Main() {
         System.out.println("Programacion funcional");
 
-        // crear la lista de enteros
+        // 1. Generar elementos de la lista
         List<Integer> listaNumeros = SuperFunciones.proveer(10, new Aleatorio());
         System.out.println("Numeros generados.");
         listaNumeros.forEach(System.out::println);
         System.out.println("----------------------------------");
         
-        // quedarme con solo los pares
+        // 2. Filtrar solo los numeros pares
         List<Integer> filtrados = SuperFunciones.filtrar(listaNumeros, new SoloPares());
         // mostrar
         System.out.println("Numeros filtrados.");
         filtrados.forEach(System.out::println);
         System.out.println("----------------------------------");
 
-        // pasar cada numero al cuadrado
+        // 3. Obtener el cuadrado de cada numero 
         System.out.println("Mostrando la lista: ");
         List<Integer> trasformados = SuperFunciones.transformar(filtrados, new AlCubo());
-        // mostramos
+        System.out.println(trasformados);
         System.out.println("----------------------------------");
         
-        //para mostrar la lista 
+        // 4A. mostrar cada cuadrado por pantalla y retornar lista
         System.out.println("Numeros elevados al cuadrado");
-        List<Integer> mostrados = SuperFunciones.actuar(trasformados, new Impresor());
-        System.out.println("\n----------------------------------");
+        List<Integer> actuados = SuperFunciones.actuar(filtrados, new Impresor());
         
+        // 4B. mostrar cada cuadrado por pantalla y no retornar lista
+        SuperFunciones.consumir(trasformados, new Impresor());
+        System.out.println("\n----------------------------------");
+
     }
 
 }

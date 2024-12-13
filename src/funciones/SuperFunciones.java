@@ -36,10 +36,16 @@ public class SuperFunciones {
         return resultado;
     }
 
-    public static List<Integer> actuar(List<Integer> valores, Consumidor consumidor){
+    public static List<Integer> actuar(List<Integer> valores, Consumidor consumidor) {
         for (Integer valor : valores) {
             consumidor.aceptar(valor);
         }
         return valores;
+    }
+
+    public static void consumir(List<Integer> trasformados, Consumidor consumidor) {
+        for (Integer integer : trasformados) {
+            consumidor.aceptar(integer);
+        }
     }
 }
