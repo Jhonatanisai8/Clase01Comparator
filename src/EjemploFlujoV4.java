@@ -9,15 +9,8 @@ public class EjemploFlujoV4 {
     }
 
     public EjemploFlujoV4() {
-
-        Integer total = Flujo.proveer(3, new Provedor<Integer>() {
-            Random r = new Random();
-
-            @Override
-            public Integer obtener() {
-                return r.nextInt(10);
-            }
-        }).filtrar(new Predicado<>() {
+        Integer total = new Flujo<Integer>(List.of(1,2,3,4,5,6,7,8))
+        .filtrar(new Predicado<>() {
             @Override
             public boolean text(Integer valor) {
                 return valor % 2 == 0;

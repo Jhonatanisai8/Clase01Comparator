@@ -4,7 +4,7 @@ import java.util.*;
 
 import v4Flujo.interfaces.*;
 
-public class Flujo<T> {
+public class Flujo <T> {
     private final List<T> valores;
 
     public Flujo(List<T> valores) {
@@ -26,7 +26,7 @@ public class Flujo<T> {
                 resultado.add(valor);
             }
         }
-        return new Flujo<>(valores);
+        return new Flujo<>(resultado);
     }
 
     public <R> Flujo<R> transformar(Funcion<T, R> funcion) {
