@@ -45,7 +45,7 @@ public class SuperFunciones {
         }
     }
 
-    public static <T> T reducir(List<T> valores, T identidad, OperdorBinario<T> funcionBinaria) {
+    public static <T> T reducir(List<T> valores, T identidad, OperadorBinario<T> funcionBinaria) {
         T total = identidad;
         for (T valor : valores) {
             total = funcionBinaria.aplicar(total, valor);
