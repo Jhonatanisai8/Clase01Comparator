@@ -1,8 +1,8 @@
 package v5Lambdas.interfaces;
 
 @FunctionalInterface
-public interface Consumidor <T> {
+public interface Consumidor<T> {
 
-	void aceptar(T valor);
+    void aceptar(T valor);
 
 }
