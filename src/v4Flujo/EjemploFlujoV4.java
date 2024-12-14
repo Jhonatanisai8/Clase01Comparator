@@ -1,6 +1,6 @@
+package v4Flujo;
 import java.util.*;
 
-import v4Flujo.Flujo;
 import v4Flujo.interfaces.*;
 
 public class EjemploFlujoV4 {

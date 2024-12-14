@@ -1,32 +1,32 @@
+package v3InlaneClases;
 import java.util.List;
 import java.util.Random;
 
-import v3InlaneClases.interfaces.*;
-import v3InlaneClases.SuperFunciones;
+import v2Superfunciones.interfaces.*;
+import v2Superfunciones.SuperFunciones;
 
-public class EjemploInterfacesGenericas {
+public class EjemploClasesAnonimas {
     public static void main(String[] args) {
-        new EjemploInterfacesGenericas();
+        new EjemploClasesAnonimas();
     }
 
-    public EjemploInterfacesGenericas() {
+    public EjemploClasesAnonimas() {
         System.out.println("Programacion funcional");
 
         // 1. Generar elementos de la lista
         System.out.println("Numeros generados.");
-        List<Integer> listaNumeros = SuperFunciones.proveer(10, new Provedor<>() {
+        List<Integer> listaNumeros = SuperFunciones.proveer(5, new Provedor() {
             Random r = new Random();
-
             @Override
             public Integer obtener() {
                 return r.nextInt(10);
             }
         });
-        System.out.println(listaNumeros);
+        listaNumeros.forEach(System.out::println);
         System.out.println("----------------------------------");
 
         // 2. Filtrar solo los numeros pares
-        List<Integer> filtrados = SuperFunciones.filtrar(listaNumeros, new Predicado<>() {
+        List<Integer> filtrados = SuperFunciones.filtrar(listaNumeros, new Predicado() {
             @Override
             public boolean text(Integer valor) {
                 return valor % 2 == 0;
@@ -34,12 +34,12 @@ public class EjemploInterfacesGenericas {
         });
         // mostrar
         System.out.println("Numeros filtrados.");
-        System.out.println(filtrados);
+        filtrados.forEach(System.out::println);
         System.out.println("----------------------------------");
 
-        // 3.A => Obtener el cuadrado de cada numero
-        System.out.println("Mostrando la lista de Integer ");
-        List<Integer> trasformados = SuperFunciones.transformar(filtrados, new OperadorUnario<Integer>() {
+        // 3. Obtener el cuadrado de cada numero
+        System.out.println("Mostrando la lista: ");
+        List<Integer> trasformados = SuperFunciones.transformar(filtrados, new Funcion() {
             @Override
             public Integer aplicar(Integer valor) {
                 return valor * valor;
@@ -48,37 +48,26 @@ public class EjemploInterfacesGenericas {
         System.out.println(trasformados);
         System.out.println("----------------------------------");
 
-        // 3.B => Obtener cada numero convertido en cadena
-        System.out.println("Mostrando la lista de String");
-        List<String> convertidosCadena = SuperFunciones.transformar(filtrados, new Funcion<Integer, String>() {
-            @Override
-            public String aplicar(Integer valor) {
-                return "Valor: " + valor;
-            }
-        });
-        convertidosCadena.forEach(System.out::println);
-        System.out.println("----------------------------------");
-
-        // / 4A. mostrar cada cuadrado por pantalla y retornar lista
-        Consumidor<Integer> impresor = new Consumidor<>() {
+        Consumidor impresor = new Consumidor() {
             @Override
             public void aceptar(Integer valor) {
                 System.out.println(valor);
             }
         };
+        // 4A. mostrar cada cuadrado por pantalla y retornar lista
         System.out.println("Numeros elevados al cuadrado");
         List<Integer> actuados = SuperFunciones.actuar(trasformados, impresor);
-        System.out.println();
 
         // 4B. mostrar cada cuadrado por pantalla y no retornar lista
-        System.out.println("Numeros elevados al cuadrado sin retorno.");
-        SuperFunciones.consumir(trasformados, impresor);
+
+        //SuperFunciones.consumir(trasformados, impresor);
+
         System.out.println("\n----------------------------------");
 
         // 5. obtener la suma
-        Integer total = SuperFunciones.reducir(actuados, 0, new OperdorBinario<>() {
+        int total = SuperFunciones.reducir( actuados , 0, new FuncionBinaria() {
             @Override
-            public Integer aplicar(Integer valor1, Integer valor2) {
+            public int aplicar(Integer valor1, Integer valor2) {
                 return valor1 + valor2;
             }
         });
@@ -86,4 +75,5 @@ public class EjemploInterfacesGenericas {
         System.out.println("\n----------------------------------");
 
     }
+
 }
