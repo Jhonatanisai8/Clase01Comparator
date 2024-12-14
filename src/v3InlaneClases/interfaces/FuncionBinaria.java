@@ -1,7 +1,12 @@
 package v3InlaneClases.interfaces;
 
-public interface FuncionBinaria {
+/*
+ * T => TIPO DEL PRIMER VALOR 
+ * U => SEGUNDO VALOR 
+ * R => TIPO DE RETORNO
+ */
+public interface FuncionBinaria<T, U, R> {
 
-    int aplicar(Integer valor1, Integer valor2);
-    
+    R aplicar(T valor1, U valor2);
+
 }

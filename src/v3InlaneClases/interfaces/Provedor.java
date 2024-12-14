@@ -1,7 +1,7 @@
 package v3InlaneClases.interfaces;
 
-public interface Provedor {
+public interface Provedor <T> {
 
-    Integer obtener();
+    T obtener();
 
 }

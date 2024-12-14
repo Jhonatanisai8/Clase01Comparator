@@ -1,6 +1,6 @@
 package v3InlaneClases.interfaces;
 
-public interface Predicado {
+public interface Predicado <T> {
 
-    boolean text(Integer valor);
+    boolean text(T valor);
 }

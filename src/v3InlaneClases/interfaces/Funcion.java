@@ -1,7 +1,8 @@
 package v3InlaneClases.interfaces;
+// R PARA EL TIPO DE RETORNO
+// T PARA EL TIPO DE VALOR QUE RICIBI COMO PARAMETRO
+public interface Funcion <T, R> {
 
-public interface Funcion {
-
-    Integer aplicar(Integer valor);
+    R aplicar(T valor);
 
 }

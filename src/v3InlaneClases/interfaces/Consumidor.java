@@ -1,7 +1,7 @@
 package v3InlaneClases.interfaces;
 
-public interface Consumidor {
+public interface Consumidor <T> {
 
-	void aceptar(Integer valor);
+	void aceptar(T valor);
 
 }
