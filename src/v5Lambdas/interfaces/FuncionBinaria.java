@@ -5,6 +5,7 @@ package v5Lambdas.interfaces;
  * U => SEGUNDO VALOR 
  * R => TIPO DE RETORNO
  */
+@FunctionalInterface
 public interface FuncionBinaria<T, U, R> {
 
     R aplicar(T valor1, U valor2);

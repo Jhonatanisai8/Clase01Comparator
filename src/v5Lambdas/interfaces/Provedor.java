@@ -1,5 +1,7 @@
 package v5Lambdas.interfaces;
-public interface Provedor <T> {
+
+@FunctionalInterface
+public interface Provedor<T> {
 
     T obtener();
 
