@@ -6,9 +6,9 @@ import java.util.List;
 import v3InlaneClases.interfaces.*;
 
 public class SuperFunciones {
-    public static List<Integer> filtrar(List<Integer> valores, Predicado predicado) {
-        List<Integer> resultado = new ArrayList<>();
-        for (Integer valor : valores) {
+    public static <T> List<T> filtrar(List<T> valores, Predicado predicado) {
+        List<T> resultado = new ArrayList<>();
+        for (T valor : valores) {
             if (predicado.text(valor)) {
                 resultado.add(valor);
             }
@@ -16,38 +16,38 @@ public class SuperFunciones {
         return resultado;
     }
 
-    public static List<Integer> proveer(int tamanio, Provedor provedor) {
-        List<Integer> resultado = new ArrayList<>();
+    public static <T> List<T> proveer(int tamanio, Provedor provedor) {
+        List<T> resultado = new ArrayList<>();
         for (int i = 0; i < tamanio; i++) {
             resultado.add(provedor.obtener());
         }
         return resultado;
     }
 
-    public static List<Integer> transformar(List<Integer> lista, Funcion funcion) {
-        List<Integer> resultado = new ArrayList<>();
-        for (Integer valor : lista) {
+    public static <T> List<T> transformar(List<T> lista, Funcion funcion) {
+        List<T> resultado = new ArrayList<>();
+        for (T valor : lista) {
             resultado.add(funcion.aplicar(valor));
         }
         return resultado;
     }
 
-    public static List<Integer> actuar(List<Integer> valores, Consumidor consumidor) {
-        for (Integer valor : valores) {
+    public static <T> List<T> actuar(List<T> valores, Consumidor consumidor) {
+        for (T valor : valores) {
             consumidor.aceptar(valor);
         }
         return valores;
     }
 
-    public static void consumir(List<Integer> trasformados, Consumidor consumidor) {
-        for (Integer integer : trasformados) {
-            consumidor.aceptar(integer);
+    public static <T> void consumir(List<T> trasformados, Consumidor consumidor) {
+        for (T T : trasformados) {
+            consumidor.aceptar(T);
         }
     }
 
-    public static Integer reducir(List<Integer> valores, Integer identidad, FuncionBinaria funcionBinaria) {
-        int total = identidad;
-        for (Integer valor : valores) {
+    public static  <T> reducir(List<T> valores, T identidad, FuncionBinaria funcionBinaria) {
+        T total = identidad;
+        for (T valor : valores) {
             total = funcionBinaria.aplicar(total, valor);
         }
         return total;
