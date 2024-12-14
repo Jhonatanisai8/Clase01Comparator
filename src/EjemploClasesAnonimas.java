@@ -1,6 +1,5 @@
 import java.util.List;
 import java.util.Random;
-import v3InlaneClases.interfaces.FuncionBinaria;
 import v2Superfunciones.clases.AlCuadrado;
 import v2Superfunciones.clases.AlCubo;
 import v2Superfunciones.clases.Aleatorio;
@@ -11,6 +10,7 @@ import v2Superfunciones.clases.SoloPares;
 import v2Superfunciones.clases.Sumador;
 import v2Superfunciones.interfaces.Consumidor;
 import v2Superfunciones.interfaces.Funcion;
+import v2Superfunciones.interfaces.FuncionBinaria;
 import v2Superfunciones.interfaces.Predicado;
 import v2Superfunciones.interfaces.Provedor;
 import v2Superfunciones.SuperFunciones;
@@ -77,7 +77,7 @@ public class EjemploClasesAnonimas {
         // 5. obtener la suma
         int total = SuperFunciones.reducir( actuados , 0, new FuncionBinaria() {
             @Override
-            public Integer aplicar(Integer valor1, Integer valor2) {
+            public int aplicar(Integer valor1, Integer valor2) {
                 return valor1 + valor2;
             }
         });
