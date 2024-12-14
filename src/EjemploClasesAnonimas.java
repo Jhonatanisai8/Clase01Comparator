@@ -1,18 +1,7 @@
 import java.util.List;
 import java.util.Random;
-import v2Superfunciones.clases.AlCuadrado;
-import v2Superfunciones.clases.AlCubo;
-import v2Superfunciones.clases.Aleatorio;
-import v2Superfunciones.clases.Impresor;
-import v2Superfunciones.clases.Naturales;
-import v2Superfunciones.clases.SoloImpares;
-import v2Superfunciones.clases.SoloPares;
-import v2Superfunciones.clases.Sumador;
-import v2Superfunciones.interfaces.Consumidor;
-import v2Superfunciones.interfaces.Funcion;
-import v2Superfunciones.interfaces.FuncionBinaria;
-import v2Superfunciones.interfaces.Predicado;
-import v2Superfunciones.interfaces.Provedor;
+
+import v2Superfunciones.interfaces.*;
 import v2Superfunciones.SuperFunciones;
 
 public class EjemploClasesAnonimas {
