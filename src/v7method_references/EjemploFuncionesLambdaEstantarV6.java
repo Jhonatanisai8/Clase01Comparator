@@ -13,10 +13,10 @@ public class EjemploFuncionesLambdaEstantarV6 {
     public EjemploFuncionesLambdaEstantarV6() {
 
         // codigo mas legible
-        Integer total = Flujo.proveer(10, () -> generarNumero())
+        Integer total = Flujo.proveer(10, this::generarNumero)
                 .filtrar(NumberUtils::esPrimo)
                 .transformar(NumberUtils::elevarCuadrado)
-                .actuar(valor -> System.out.println("Valor: " + valor))
+                .actuar(System.out::println)
                 .reducir(0, Integer::sum);
 
         System.out.println("SUMA => " + total);
