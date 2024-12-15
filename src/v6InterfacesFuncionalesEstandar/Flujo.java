@@ -1,7 +1,6 @@
 package v6InterfacesFuncionalesEstandar;
 import java.util.*;
-
-import v5Lambdas.interfaces.*;
+import java.util.function.*;
 
 public class Flujo<T> {
     private final List<T> valores;
@@ -10,50 +9,50 @@ public class Flujo<T> {
         this.valores = valores;
     }
 
-    public static <T> Flujo<T> proveer(int tamanio, Provedor<T> provedor) {
+    public static <T> Flujo<T> proveer(int tamanio, Supplier<T> provedor) {
         List<T> resultado = new ArrayList<>();
         for (int i = 0; i < tamanio; i++) {
-            resultado.add(provedor.obtener());
+            resultado.add(provedor.get());
         }
         return new Flujo<>(resultado);
     }
 
-    public Flujo<T> filtrar(Predicado<T> predicado) {
+    public Flujo<T> filtrar(Predicate<T> predicado) {
         List<T> resultado = new ArrayList<>();
         for (T valor : valores) {
-            if (predicado.text(valor)) {
+            if (predicado.test(valor)) {
                 resultado.add(valor);
             }
         }
         return new Flujo<>(resultado);
     }
 
-    public <R> Flujo<R> transformar(Funcion<T, R> funcion) {
+    public <R> Flujo<R> transformar(Function<T, R> funcion) {
         List<R> resultado = new ArrayList<>();
         for (T valor : valores) {
-            resultado.add(funcion.aplicar(valor));
+            resultado.add(funcion.apply(valor));
         }
         return new Flujo<>(resultado);
     }
 
-    public Flujo<T> actuar(Consumidor<T> consumidor) {
+    public Flujo<T> actuar(Consumer<T> consumidor) {
         for (T valor : valores) {
-            consumidor.aceptar(valor);
+            consumidor.accept(valor);
         }
         return new Flujo<>(valores);
     }
 
-    public void consumir(Consumidor<T> consumidor) {
+    public void consumir(Consumer<T> consumidor) {
         for (T T : valores) {
-            consumidor.aceptar(T);
+            consumidor.accept(T);
         }
 
     }
 
-    public T reducir(T identidad, OperadorBinario<T> funcionBinaria) {
+    public T reducir(T identidad, BinaryOperator<T> funcionBinaria) {
         T total = identidad;
         for (T valor : valores) {
-            total = funcionBinaria.aplicar(total, valor);
+            total = funcionBinaria.apply(total, valor);
         }
         return total;
     }

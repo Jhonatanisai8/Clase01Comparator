@@ -2,13 +2,13 @@ package v6InterfacesFuncionalesEstandar;
 
 import java.util.Random;
 
-public class EjemploLambdaV5 {
+public class EjemploFuncionesLambdaEstantarV6 {
     Random r = new Random();
     public static void main(String[] args) {
-        new EjemploLambdaV5();
+        new EjemploFuncionesLambdaEstantarV6();
     }
 
-    public EjemploLambdaV5() {
+    public EjemploFuncionesLambdaEstantarV6() {
         Integer total = Flujo.proveer(10, () -> r.nextInt(10))
                 .filtrar(numero -> numero % 2 == 0)
                 .transformar(valor -> valor * valor)
