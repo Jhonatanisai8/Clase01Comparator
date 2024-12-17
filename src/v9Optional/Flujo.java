@@ -64,6 +64,14 @@ public class Flujo<T> {
         return new Flujo<>(listaOrdenada);
     }
 
+    public T max(Comparator<T> comparador) {
+        try {
+            return Collections.max(valores, comparador);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
     @Override
     public String toString() {
         return valores.toString();
