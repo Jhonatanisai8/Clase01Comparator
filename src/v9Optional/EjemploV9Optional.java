@@ -1,7 +1,6 @@
 package v9Optional;
 
 import java.util.Comparator;
-import java.util.Optional;
 import java.util.Random;
 import static v7method_references.NumberUtils.*;
 
@@ -15,7 +14,7 @@ public class EjemploV9Optional {
     public EjemploV9Optional() {
         // codigo mas legible
         /* Optional<Integer> maximo = */ Flujo.proveer(10, this::generarNumero)
-                .filtrar(valor -> valor >= 10)
+                .filtrar(valor -> valor >= 0)
                 .ordenar(Integer::compareTo) // => ordena de menor a mayor
                 .transformar(NumberUtils::elevarCuadrado)
                 // .transformar(valor -> new Descripcion(valor))
@@ -24,9 +23,12 @@ public class EjemploV9Optional {
                 // .transformar( desc -> desc.getvalue())
                 .transformar(Descripcion::getValue)
                 .max(Comparator.naturalOrder())
-                .ifPresent(valor -> System.out.println("Maximo Valor: " + valor.doubleValue()));
+                // .ifPresent(valor -> System.out.println("Maximo Valor: " +
+                // valor.doubleValue()));
+                .ifPresentOrElse(
+                        t -> System.out.println("Maximo Valor: " + t),
+                        () -> System.out.println("No hay maximo por que el flujo esta vacio."));
     }
-
 
     // para generar el numero aleatorio
     private int generarNumero() {
