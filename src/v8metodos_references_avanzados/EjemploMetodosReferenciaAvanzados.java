@@ -3,22 +3,25 @@ package v8metodos_references_avanzados;
 import java.util.Random;
 import static v7method_references.NumberUtils.*;
 
-public class EjemploFuncionesLambdaEstantarV6 {
+public class EjemploMetodosReferenciaAvanzados {
     Random r = new Random();
 
     public static void main(String[] args) {
-        new EjemploFuncionesLambdaEstantarV6();
+        new EjemploMetodosReferenciaAvanzados();
     }
 
-    public EjemploFuncionesLambdaEstantarV6() {
-
+    public EjemploMetodosReferenciaAvanzados() {
         // codigo mas legible
         Integer total = Flujo.proveer(10, this::generarNumero)
                 .filtrar(NumberUtils::esPrimo)
+                .ordenar(Integer::compareTo) // => ordena de menor a mayor
                 .transformar(NumberUtils::elevarCuadrado)
+                // .transformar(valor -> new Descripcion(valor))
+                .transformar(Descripcion::new)
                 .actuar(System.out::println)
+                // .transformar( desc -> desc.getvalue())
+                .transformar(Descripcion::getValue)
                 .reducir(0, Integer::sum);
-
         System.out.println("SUMA => " + total);
     }
 
