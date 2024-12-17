@@ -64,11 +64,11 @@ public class Flujo<T> {
         return new Flujo<>(listaOrdenada);
     }
 
-    public T max(Comparator<T> comparador) {
+    public Optional<T> max(Comparator<T> comparador) {
         try {
-            return Collections.max(valores, comparador);
+            return Optional.of(Collections.max(valores, comparador));
         } catch (Exception e) {
-            return null;
+            return Optional.empty(); // => retornamos un valor vacio
         }
     }
 
