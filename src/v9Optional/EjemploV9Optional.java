@@ -24,11 +24,12 @@ public class EjemploV9Optional {
                 // .transformar( desc -> desc.getvalue())
                 .transformar(Descripcion::getValue)
                 .max(Comparator.naturalOrder());
-        if (maximo.isPresent()) {
-            System.out.println("Maximo: " + maximo);
-        } else {
-            System.out.println("NO devolvio nada.");
-        }
+        double maxDouble = maximo.orElseGet(() -> getValorSiNoHayMaximo()).doubleValue();
+        System.out.println("Maximo: " + maxDouble);
+    }
+
+    private Integer getValorSiNoHayMaximo() {
+        return 0;
     }
 
     // para generar el numero aleatorio
