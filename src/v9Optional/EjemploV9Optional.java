@@ -14,7 +14,7 @@ public class EjemploV9Optional {
 
     public EjemploV9Optional() {
         // codigo mas legible
-        Optional<Integer> maximo = Flujo.proveer(10, this::generarNumero)
+        /* Optional<Integer> maximo = */ Flujo.proveer(10, this::generarNumero)
                 .filtrar(valor -> valor >= 10)
                 .ordenar(Integer::compareTo) // => ordena de menor a mayor
                 .transformar(NumberUtils::elevarCuadrado)
@@ -23,14 +23,10 @@ public class EjemploV9Optional {
                 .actuar(System.out::println)
                 // .transformar( desc -> desc.getvalue())
                 .transformar(Descripcion::getValue)
-                .max(Comparator.naturalOrder());
-        double maxDouble = maximo.orElseGet(() -> getValorSiNoHayMaximo()).doubleValue();
-        System.out.println("Maximo: " + maxDouble);
+                .max(Comparator.naturalOrder())
+                .ifPresent(valor -> System.out.println("Maximo Valor: " + valor.doubleValue()));
     }
 
-    private Integer getValorSiNoHayMaximo() {
-        return 0;
-    }
 
     // para generar el numero aleatorio
     private int generarNumero() {
